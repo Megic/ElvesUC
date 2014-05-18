@@ -18,7 +18,7 @@ function SetUserCOMConfig($add){
 	{
 		InstallShowMsg('文件 /core/update/data/user.php 丢失,安装不成功.');
 	}
-	if(stristr($add['tablename'],'enewsmember'))
+	if(stristr($add['tablename'],'melvemember'))
 	{
 		$add['chmember']=0;
 	}
@@ -67,21 +67,21 @@ function SetUserCOMConfig($add){
 
 //运行安装接口文件
 function InstallUserCOM(){
-	global $Elves,$ecms_config;
-	$user_userfen="enewsuserfen";
-	$user_money="enewsmoney";
-	$user_salt="enewssalt";
-	$sql=$Elves->query1("alter table ".$ecms_config['member']['tablename']." 
-	add ".$ecms_config['memberf']['groupid']." smallint NOT NULL default '0',
-	add ".$ecms_config['memberf']['rnd']." char(20) NOT NULL default '',
+	global $Elves,$elve_config;
+	$user_userfen="melveuserfen";
+	$user_money="melvemoney";
+	$user_salt="melvesalt";
+	$sql=$Elves->query1("alter table ".$elve_config['member']['tablename']." 
+	add ".$elve_config['memberf']['groupid']." smallint NOT NULL default '0',
+	add ".$elve_config['memberf']['rnd']." char(20) NOT NULL default '',
 	add ".$user_userfen." mediumint(8) unsigned NOT NULL default '0',
 	add ".$user_money." float(11,2) NOT NULL default '0.00',
-	add ".$ecms_config['memberf']['userdate']." int(10) unsigned NOT NULL default '0',
-	add ".$ecms_config['memberf']['zgroupid']." smallint not null default '0',
-	add ".$ecms_config['memberf']['havemsg']." tinyint(1) not null default '0',
-	add ".$ecms_config['memberf']['userkey']." char(12) NOT NULL default '',
+	add ".$elve_config['memberf']['userdate']." int(10) unsigned NOT NULL default '0',
+	add ".$elve_config['memberf']['zgroupid']." smallint not null default '0',
+	add ".$elve_config['memberf']['havemsg']." tinyint(1) not null default '0',
+	add ".$elve_config['memberf']['userkey']." char(12) NOT NULL default '',
 	add ".$user_salt." char(8) NOT NULL default '',
-	add ".$ecms_config['memberf']['checked']." tinyint(1) not null default '1';");
+	add ".$elve_config['memberf']['checked']." tinyint(1) not null default '1';");
 	if(!$sql)
 	{
 		echo"运行安装接口程序出现以下错误:<br><font color=red>".mysql_error()."</font><br><br><a href='index.php'>点击返回重新设置</a>";
@@ -95,11 +95,11 @@ function InstallUserCOM(){
 
 //运行升级接口文件
 function UpdateUserCOM(){
-	global $Elves,$ecms_config;
-	$user_salt="enewssalt";
-	$sql=$Elves->query1("alter table ".$ecms_config['member']['tablename']." 
+	global $Elves,$elve_config;
+	$user_salt="melvesalt";
+	$sql=$Elves->query1("alter table ".$elve_config['member']['tablename']." 
 	add ".$user_salt." char(8) NOT NULL default '',
-	add ".$ecms_config['memberf']['userkey']." char(12) NOT NULL default '';");
+	add ".$elve_config['memberf']['userkey']." char(12) NOT NULL default '';");
 	if(!$sql)
 	{
 		echo"运行安装接口程序出现以下错误:<br><font color=red>".mysql_error()."</font><br><br><a href='index.php'>点击返回重新设置</a>";
@@ -118,7 +118,7 @@ function UserCOMReturnConfigtext($usercomtext){
 	{
 		InstallShowMsg(' /core/config/config.php 文件权限没有设为0777，安装不成功.');
 	}
-	$exp='//-------EmpireCMS.Seting.member-------';
+	$exp='//-------Empirelve.Seting.member-------';
 	$r=explode($exp,$configtext);
 	if($r[0]=='')
 	{

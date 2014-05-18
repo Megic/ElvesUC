@@ -85,15 +85,15 @@ td, th, caption { font-family:  "宋体"; font-size: 12px; color:#000000;  LINE-
 	  	  $p=$_GET['p'];
 		  include("../class/connect.php");
 		  @include LoadUserCOMInfo($p);
-		  if($ecms_config['member']['pwtype']!=2)
+		  if($elve_config['member']['pwtype']!=2)
 		  {
 		  	$passdiv=" style='display:none'";
 		  }
-		  if(!$ecms_config['memberf']['checked'])
+		  if(!$elve_config['memberf']['checked'])
 		  {
 		  	$doinstall=2;
 		  }
-		  elseif(!strstr($ecms_config['member']['tablename'],'enewsmember')||$p)
+		  elseif(!strstr($elve_config['member']['tablename'],'melvemember')||$p)
 		  {
 		  	$doinstall=1;
 		  }
@@ -160,95 +160,95 @@ td, th, caption { font-family:  "宋体"; font-size: 12px; color:#000000;  LINE-
           </tr>
           <tr bgcolor="#FFFFFF"> 
             <td height="25"><font color="#FF0000">用户表</font></td>
-            <td><input name="tablename" type="text" id="tablename2" value="<?=$ecms_config['member']['tablename']?>" size="38"> 
+            <td><input name="tablename" type="text" id="tablename2" value="<?=$elve_config['member']['tablename']?>" size="38"> 
             </td>
             <td>会员数据表,格式为：<font color="#666666">数据库.会员表</font></td>
           </tr>
           <tr bgcolor="#FFFFFF"> 
             <td height="25">用户ID字段</td>
-            <td> <input name="userid" type="text" id="userid" value="<?=$ecms_config['memberf']['userid']?>" size="38"></td>
+            <td> <input name="userid" type="text" id="userid" value="<?=$elve_config['memberf']['userid']?>" size="38"></td>
             <td>用户ID字段</td>
           </tr>
           <tr bgcolor="#FFFFFF"> 
             <td height="25">用户名字段</td>
-            <td> <input name="username" type="text" id="username" value="<?=$ecms_config['memberf']['username']?>" size="38"></td>
+            <td> <input name="username" type="text" id="username" value="<?=$elve_config['memberf']['username']?>" size="38"></td>
             <td>用户名字段</td>
           </tr>
           <tr bgcolor="#FFFFFF"> 
             <td height="25">密码字段</td>
-            <td> <input name="password" type="text" id="password" value="<?=$ecms_config['memberf']['password']?>" size="38"></td>
+            <td> <input name="password" type="text" id="password" value="<?=$elve_config['memberf']['password']?>" size="38"></td>
             <td>密码字段</td>
           </tr>
           <tr bgcolor="#FFFFFF"> 
             <td height="25">密码保存形式</td>
             <td> <select name="dopass" id="dopass" onchange="if(this.options[this.selectedIndex].value==2){passdiv.style.display='';}else{passdiv.style.display='none';}">
-                <option value="0"<?=$ecms_config['member']['pwtype']==0?' selected':''?>>MD5加密</option>
-                <option value="1"<?=$ecms_config['member']['pwtype']==1?' selected':''?>>没有加密</option>
-                <option value="2"<?=$ecms_config['member']['pwtype']==2?' selected':''?>>双重MD5加密</option>
-                <option value="3"<?=$ecms_config['member']['pwtype']==3?' selected':''?>>16位MD5加密</option>
+                <option value="0"<?=$elve_config['member']['pwtype']==0?' selected':''?>>MD5加密</option>
+                <option value="1"<?=$elve_config['member']['pwtype']==1?' selected':''?>>没有加密</option>
+                <option value="2"<?=$elve_config['member']['pwtype']==2?' selected':''?>>双重MD5加密</option>
+                <option value="3"<?=$elve_config['member']['pwtype']==3?' selected':''?>>16位MD5加密</option>
               </select></td>
             <td>密码保存形式</td>
           </tr>
           <tr bgcolor="#FFFFFF" id="passdiv"<?=$passdiv?>> 
             <td height="25">&nbsp;</td>
             <td>salt字段: 
-              <input name="salt" type="text" id="salt" value="<?=$ecms_config['memberf']['salt']?>" size="12">
+              <input name="salt" type="text" id="salt" value="<?=$elve_config['memberf']['salt']?>" size="12">
               随机码字符数: 
-              <input name="saltnum" type="text" id="saltnum" value="<?=$ecms_config['member']['saltnum']?>" size="2"></td>
+              <input name="saltnum" type="text" id="saltnum" value="<?=$elve_config['member']['saltnum']?>" size="2"></td>
             <td>双重MD5加密需要设置</td>
           </tr>
           <tr bgcolor="#FFFFFF"> 
             <td height="25">邮箱字段</td>
-            <td> <input name="email" type="text" id="email" value="<?=$ecms_config['memberf']['email']?>" size="38"></td>
+            <td> <input name="email" type="text" id="email" value="<?=$elve_config['memberf']['email']?>" size="38"></td>
             <td>邮箱字段</td>
           </tr>
           <tr bgcolor="#FFFFFF"> 
             <td height="25"> 注册时间字段</td>
-            <td> <input name="registertime" type="text" id="registertime" value="<?=$ecms_config['memberf']['registertime']?>" size="38"></td>
+            <td> <input name="registertime" type="text" id="registertime" value="<?=$elve_config['memberf']['registertime']?>" size="38"></td>
             <td>注册时间字段</td>
           </tr>
           <tr bgcolor="#FFFFFF"> 
             <td height="25">注册时间保存形式</td>
             <td> <select name="register" id="register">
-                <option value="0"<?=$ecms_config['member']['regtimetype']==0?' selected':''?>>正常时间格式</option>
-                <option value="1"<?=$ecms_config['member']['regtimetype']==1?' selected':''?>>数值型</option>
+                <option value="0"<?=$elve_config['member']['regtimetype']==0?' selected':''?>>正常时间格式</option>
+                <option value="1"<?=$elve_config['member']['regtimetype']==1?' selected':''?>>数值型</option>
               </select></td>
             <td>注册时间保存形式</td>
           </tr>
           <tr bgcolor="#FFFFFF"> 
             <td height="25">点数字段</td>
-            <td><input name="userfen" type="text" id="userfen" value="<?=$ecms_config['memberf']['userfen']?>" size="38"></td>
+            <td><input name="userfen" type="text" id="userfen" value="<?=$elve_config['memberf']['userfen']?>" size="38"></td>
             <td>如需整合点数字段，请输入要整合的字段名.</td>
           </tr>
           <tr bgcolor="#FFFFFF"> 
             <td height="25">现金余额字段</td>
-            <td><input name="money" type="text" id="money" value="<?=$ecms_config['memberf']['money']?>" size="38"></td>
+            <td><input name="money" type="text" id="money" value="<?=$elve_config['memberf']['money']?>" size="38"></td>
             <td>如需整合现金字段，请输入要整合的字段名.</td>
           </tr>
           <tr bgcolor="#FFFFFF"> 
             <td height="25">会员注册中转页面</td>
-            <td><input name="changeregisterurl" type="text" id="changeregisterurl" value="<?=$ecms_config['member']['changeregisterurl']?>" size="38"></td>
+            <td><input name="changeregisterurl" type="text" id="changeregisterurl" value="<?=$elve_config['member']['changeregisterurl']?>" size="38"></td>
             <td>如果是自定义注册页面需设置</td>
           </tr>
           <tr bgcolor="#FFFFFF"> 
             <td height="25"><font color="#FF0000">会员注册地址</font></td>
-            <td> <input name="registerurl" type="text" id="registerurl" value="<?=$ecms_config['member']['registerurl']?>" size="38"></td>
+            <td> <input name="registerurl" type="text" id="registerurl" value="<?=$elve_config['member']['registerurl']?>" size="38"></td>
             <td>填写被整合程序的注册地址</td>
           </tr>
           <tr bgcolor="#FFFFFF"> 
             <td height="25">会员登陆地址</td>
-            <td><input name="loginurl" type="text" id="loginurl" value="<?=$ecms_config['member']['loginurl']?>" size="38"></td>
+            <td><input name="loginurl" type="text" id="loginurl" value="<?=$elve_config['member']['loginurl']?>" size="38"></td>
             <td rowspan="2">通行证的选项，没有整合通行证请留空</td>
           </tr>
           <tr bgcolor="#FFFFFF"> 
             <td height="25">会员退出地址</td>
-            <td><input name="quiturl" type="text" id="quiturl" value="<?=$ecms_config['member']['quiturl']?>" size="38"></td>
+            <td><input name="quiturl" type="text" id="quiturl" value="<?=$elve_config['member']['quiturl']?>" size="38"></td>
           </tr>
           <tr bgcolor="#FFFFFF" style='display:none'> 
             <td height="25">使用的数据编码</td>
-            <td> <input type="radio" name="utfdata" value="0"<?=$ecms_config['member']['utfdata']==0?' checked':''?>>
+            <td> <input type="radio" name="utfdata" value="0"<?=$elve_config['member']['utfdata']==0?' checked':''?>>
               正常数据 
-              <input type="radio" name="utfdata" value="1"<?=$ecms_config['member']['utfdata']==1?' checked':''?>>
+              <input type="radio" name="utfdata" value="1"<?=$elve_config['member']['utfdata']==1?' checked':''?>>
               UTF8编码</td>
             <td>UTF8编码的数据需要设置</td>
           </tr>
